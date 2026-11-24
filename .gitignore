@@ -1,0 +1,10 @@
+.env
+*.sql.gz
+*_backup.sql
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+__pycache__/
+*.pyc
+.claude/

@@ -1,0 +1,8 @@
+# 실제 파일이 아닌 모든 요청을 index.php(라우터)로 보낸다.
+#  예) /api/auth/login → index.php 가 처리
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+# lib, controllers 폴더의 PHP 파일을 URL로 직접 실행하지 못하게 차단
+RewriteRule ^(lib|controllers)/ - [F,L]

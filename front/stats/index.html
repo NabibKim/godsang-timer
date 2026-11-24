@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>갓생 타이머 - 통계</title>
+  <link rel="stylesheet" href="/common/style.css">
+</head>
+<body>
+  <main class="gt-main">
+
+    <!-- ===================== 기간 선택 + 요약 ===================== -->
+    <section class="card">
+      <div class="card-header">
+        <h2>공부 통계 <span class="muted" id="range-label" style="font-size:14px;font-weight:500;"></span></h2>
+        <div class="range-buttons">
+          <button type="button" class="btn btn-sm active" data-range="recent7">최근 7일</button>
+          <button type="button" class="btn btn-sm" data-range="thisWeek">이번 주</button>
+          <button type="button" class="btn btn-sm" data-range="lastWeek">지난 주</button>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="summary-box"><div class="label">기간 총 공부시간</div><div class="value" id="st-total">-</div></div>
+        <div class="summary-box study"><div class="label">순공시간</div><div class="value" id="st-study">-</div></div>
+        <div class="summary-box rest"><div class="label">쉬는시간</div><div class="value" id="st-rest">-</div></div>
+        <div class="summary-box"><div class="label">평균 순공 비율</div><div class="value" id="st-ratio">-</div></div>
+        <div class="summary-box"><div class="label">일평균 순공시간</div><div class="value" id="st-avg">-</div></div>
+      </div>
+      <p class="message" id="stats-msg"></p>
+    </section>
+
+    <!-- ===================== 차트 ===================== -->
+    <div class="chart-row">
+      <section class="card">
+        <h2>일별 순공 · 쉬는시간 (시간)</h2>
+        <div class="chart-box"><canvas id="chart-daily" aria-label="일별 순공시간과 쉬는시간 누적 막대 차트"></canvas></div>
+      </section>
+      <section class="card">
+        <h2>순공 : 휴식 비율</h2>
+        <div class="chart-box"><canvas id="chart-ratio" aria-label="기간 전체 순공과 휴식 비율 도넛 차트"></canvas></div>
+      </section>
+    </div>
+
+    <section class="card">
+      <h2>과목별 순공시간 (시간)</h2>
+      <div class="chart-box small"><canvas id="chart-subject" aria-label="과목별 순공시간 가로 막대 차트"></canvas></div>
+      <p class="muted empty-text hidden" id="subject-empty">이 기간에 공부한 과목이 없습니다.</p>
+    </section>
+
+    <!-- ===================== 일별 표 (차트의 표 보기) ===================== -->
+    <section class="card">
+      <h2>일별 기록</h2>
+      <table class="table">
+        <thead><tr><th>날짜</th><th>총 공부시간</th><th>순공시간</th><th>쉬는시간</th><th>순공 비율</th></tr></thead>
+        <tbody id="daily-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Chart.js : 빌드 없이 CDN 으로 불러오는 차트 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+  <script src="/common/api.js"></script>
+  <script src="/common/layout.js"></script>
+  <script src="/stats/stats.js"></script>
+</body>
+</html>

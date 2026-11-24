@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>갓생 타이머 - 글쓰기</title>
+  <link rel="stylesheet" href="/common/style.css">
+</head>
+<body>
+  <main class="gt-main">
+    <section class="card">
+      <h2 id="write-heading">글쓰기</h2>
+
+      <form id="write-form">
+        <div class="form-group">
+          <label for="write-title">제목 <span class="muted" id="title-count">0/100</span></label>
+          <input type="text" class="input" id="write-title" maxlength="100" placeholder="제목을 입력하세요">
+        </div>
+        <div class="form-group">
+          <label for="write-content">내용 <span class="muted" id="content-count">0/5000</span></label>
+          <textarea class="input write-textarea" id="write-content" maxlength="5000" placeholder="오늘의 공부 인증, 질문, 스터디원 모집 등 자유롭게 작성하세요"></textarea>
+        </div>
+        <div class="post-actions">
+          <a class="btn" id="btn-cancel" href="/community/">취소</a>
+          <button type="submit" class="btn btn-primary" id="btn-submit">등록</button>
+        </div>
+        <p class="message error" id="write-msg"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="/common/api.js"></script>
+  <script src="/common/layout.js"></script>
+  <script src="/community/write.js"></script>
+</body>
+</html>
